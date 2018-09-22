@@ -1,0 +1,64 @@
+[
+    {
+        "pergunta": "A conversão do binário 11001111.01 para hexadecimal é:",
+        "respostas": [
+            {
+                "label" : "a",
+                "descricao": "8F2",
+                "condicao" : "false"
+            },
+            {
+                "label" : "b",
+                "descricao": "DF1",
+                "condicao" : "false"
+            },
+            {
+                "label" : "c",
+                "descricao": "CE4",
+                "condicao" : "false"
+            },
+            {
+                "label" : "d",
+                "descricao": "CE4",
+                "condicao" : "false"
+            },
+            {
+                "label" : "e",
+                "descricao": "CF4",
+                "condicao" : "true"
+            }
+        ],
+        "categoria": "1"
+    },
+    {
+        "pergunta": "As raízes da equação -x² + 6x = 5 representam a quantidade de vagas em certo concurso público para os cargos de instalador hidráulico e operador de estação de bombeamento. Sabendo-se que a quantidade de vagas para o cargo de instalador hidráulico foi maior do que a quantidade de vagas para o cargo de operador de estação de bombeamento, quantas são as vagas para o cargo de operador de estação de bombeamento?",
+        "respostas": [
+            {
+                "label" : "a",
+                "descricao": "1",
+                "condicao" : "true"
+            },
+            {
+                "label" : "b",
+                "descricao": "2",
+                "condicao" : "false"
+            },
+            {
+                "label" : "c",
+                "descricao": "3",
+                "condicao" : "false"
+            },
+            {
+                "label" : "d",
+                "descricao": "4",
+                "condicao" : "false"
+            },
+            {
+                "label" : "e",
+                "descricao": "5",
+                "condicao" : "false"
+            }
+        ],
+        "categoria":"2"
+    }
+]
