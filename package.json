@@ -1,0 +1,32 @@
+{
+  "name": "projetolp4",
+  "version": "1.0.0",
+  "description": "Aplicativo desenvolvido para os professores poderem criar aulas mais interativas, criando quiz e questões que podem ser respondidos pelos alunos enquanto o professor acompanha.",
+  "main": "index.js",
+  "scripts": {
+    "test": "Sem testes"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThiagoTs/ProjetoLP4"
+  },
+  "keywords": [
+    "quiz",
+    "unialfa",
+    "lp4",
+    "projetolp4"
+  ],
+  "author": "thiagots_ <thiagots_@outlook.com> & alunos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThiagoTs/ProjetoLP4/issues"
+  },
+  "homepage": "https://github.com/ThiagoTs/ProjetoLP4#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "consign": "^0.1.6",
+    "express": "^4.16.3",
+    "mysql": "^2.16.0"
+  }
+}
