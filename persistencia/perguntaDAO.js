@@ -8,9 +8,9 @@ class perguntaDAO{
      * @param callback - resposta de retorno
     */
 
-    create(perguntas,callback){
+    create(pergunta_resposta,callback){
         try {
-            this._con.querry('INSERT INTO pergunta_resposta set ?', perguntas, callback) 
+            this._con.querry('INSERT INTO pergunta_resposta set ?', pergunta_resposta, callback) 
         } catch (error) {
             console.log(error);
         }

@@ -1,18 +1,18 @@
 
 module.exports = function(app){
 
-    app.post('/usuario', function(req, resp){
+    app.post('/pergunta', function(req, resp){
         /**Propriedade que permite manipular o body da requisição */
         data = req.body;
     
         /**objetos quer me permite conectar no banco e maninpular as operações */
         var con = app.persistencia.connectionFactory;
-        var dao = new app.persistencia.usuarioDAO(con);
+        var dao = new app.persistencia.perguntaDAO(con);
     
         /**
          * valida se os dados estão corretos conforme regra de negócio
          */
-        var service = new app.services.usuarioService();
+        var service = new app.services.perguntaService();
         response = service.validarDados(data);
         if(!response.status){
             resp.status(400);
@@ -36,14 +36,14 @@ module.exports = function(app){
                  */
                 if(exception.code === 'ER_DUP_ENTRY'){
                     resp.status(400);
-                    resp.send({"mensagem":"Email já cadastrado"});
+                    resp.send({"mensagem":"Pergunta já cadastrada"});
                     return;
                 }
                 /**
                  * error genéricos
                  */
                 resp.status(500);
-                resp.send({"mensagem":"erro ao salvar usuário"});
+                resp.send({"mensagem":"erro ao salvar a pergunta"});
                 console.log(exception);
                 return;
             }
