@@ -44,7 +44,7 @@ module.exports = function(app){
      *  quando queremos definir um parâmetro definimos :id, assim, o que vier na rota /usuario/2 o 2 é o id de um usuário
      */
     app.get('/usuario/:id', function(req, resp){
-        data = req.params;
+        var data = req.params;
         var con = app.persistencia.connectionFactory;
         var dao = new app.persistencia.usuarioDAO(con);
 
@@ -86,7 +86,7 @@ module.exports = function(app){
     */
     app.post('/usuario', function(req, resp){
         /**Propriedade que permite manipular o body da requisição */
-        data = req.body;
+        var data = req.body;
 
         /**objetos quer me permite conectar no banco e maninpular as operações */
         var con = app.persistencia.connectionFactory;
@@ -147,8 +147,8 @@ module.exports = function(app){
         /**
          * o put temos tanto o parâmetro que é o id do usuário, quanto elementos no corpo da requisição com os dados novos
          */
-        param = req.params;
-        novo = req.body;
+        var param = req.params;
+        var novo = req.body;
 
         var con = app.persistencia.connectionFactory;
         var dao = new app.persistencia.usuarioDAO(con);

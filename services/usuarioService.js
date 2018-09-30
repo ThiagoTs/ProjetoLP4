@@ -4,9 +4,9 @@ class usuarioService{
 
     /**
      *  valida se os dados de usuário são válidos conforme regra de negócio
-     * @param $data - dados do usuário 
+     * @param data - dados do usuário 
      */
-    validarDados($data){
+    validarDados(data){
         if(!data.nome){
             return {status: false, message: "nome Obrigatório"};
         }
