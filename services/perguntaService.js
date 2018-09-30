@@ -4,6 +4,9 @@ class perguntaService{
     JsonGet(){
 
     }
+    validarPerguntas(){
+        
+    }
 
 }
 module.exports =  function(){
