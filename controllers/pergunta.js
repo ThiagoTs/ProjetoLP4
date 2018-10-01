@@ -92,7 +92,7 @@ module.exports = function(app){
          * valida se os dados estão corretos conforme regra de negócio
          */
         var service = new app.services.perguntaService();
-        response = service.validarDados(data);
+        response = service.validarPerguntas(data);
         if(!response.status){
             resp.status(400);
             resp.json({"message": response.message});   
@@ -137,22 +137,26 @@ module.exports = function(app){
         });
     });
 
-    /** PUT /usuario 
-     *  rota que permite alterar um usuário pelo id
+    /** PUT /pergunta 
+     *  rota que permite alterar uma pergunta pelo id
     */
-   app.put('/usuario/:id', function(req, resp){
+   app.put('/pergunta/:id', function(req, resp){
 
     /**
-     * o put temos tanto o parâmetro que é o id do usuário, quanto elementos no corpo da requisição com os dados novos
+     * o put temos tanto o parâmetro que é o id da pergunta, quanto elementos no corpo da requisição com os dados novos
      */
     var param = req.params;
     var novo = req.body;
 
     var con = app.persistencia.connectionFactory;
-    var dao = new app.persistencia.usuarioDAO(con);
+    var dao = new app.persistencia.perguntaDAO(con);
+
+    var service = new app.services.perguntaService();
+        
+    var valida = service.validarFinal(novo);
 
     /**
-     * primeiro passo na alteraçaõ do usuário é buscar o usuário pelo id
+     * primeiro passo na alteração da pergunta é buscar a pergunta pelo id
      */
     dao.findById(param.id, function(exception, result){
 
@@ -161,32 +165,43 @@ module.exports = function(app){
          */
         if(exception){
             resp.status(500);
-            resp.send({"mensagem":"erro ao salvar usuário"});
+            resp.send({"mensagem":"erro ao salvar pergunta"});
             console.log(exception);
             return;
         }
         
         /**
-         * se result vazio mensagem de usuário não encontrado junto com código http 404
+         * se result vazio mensagem de pergunta não encontrado junto com código http 404
          */
         if(result.length == 0){
             resp.status(404);
-            resp.send({"message":"usuario não encontrado"});
+            resp.send({"message":"pergunta não encontrado"});
             return;
         }
 
+        console.log(valida);
+
+        if(!valida.status){
+            resp.status(400);
+            resp.json({"message": ax2.message});
+            return;
+        }
+
+        result[0].respostas = JSON.stringify(novo.respostas);
+        
+        console.log(result);
+
         /**
-         * dados do usuário são alterados, observação: a partir do usuário já registrado no banco, antigo, alteramos
-         * os atributos que vieram na request (novo), desta forma, garantimos que um usuário existente está sendo alterado
+         * dados da pergunta são alterados, observação: a partir da pergunta já registrado no banco, antigo, alteramos
+         * os atributos que vieram na request (novo), desta forma, garantimos que uma pergunta existente está sendo alterado
          */
         antigo = result[0];
-        antigo.nome = novo.nome;
-        antigo.email = novo.email;
-        antigo.senha = novo.senha;
+        antigo.pergunta = novo.pergunta;
+        antigo.categoria = novo.categoria;
 
 
         /**
-         * Passo 2, alteramos os dados do usuário por meio de uma função assíncrona de update no banco
+         * Passo 2, alteramos os dados da pergunta por meio de uma função assíncrona de update no banco
          */
         dao.update(param.id, antigo, function(exception, result){
 
@@ -197,12 +212,12 @@ module.exports = function(app){
             if(exception){
                 if(exception.code === 'ER_DUP_ENTRY'){
                     resp.status(400);
-                    resp.send({"mensagem":"Email já cadastrado"});
+                    resp.send({"mensagem":"Pergunta já cadastrada"});
                     return;
                 }
 
                 resp.status(500);
-                resp.send({"mensagem":"erro ao alterar usuário"});
+                resp.send({"mensagem":"erro ao alterar pergunta"});
                 console.log(exception);
                 return;
             }
