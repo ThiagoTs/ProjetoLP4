@@ -42,10 +42,10 @@ module.exports = function(app){
      *  rota que obtém um único usuário pelo id passado por parâmetro (find by id)
      *  quando queremos definir um parâmetro definimos :id, assim, o que vier na rota /usuario/2 o 2 é o id de um usuário
      */
-    app.get('/usuario/:id', function(req, resp){
+    app.get('/pergunta/:id', function(req, resp){
         var data = req.params;
         var con = app.persistencia.connectionFactory;
-        var dao = new app.persistencia.usuarioDAO(con);
+        var dao = new app.persistencia.perguntaDAO(con);
 
         /**
          * função assíncrona para obter o usuário pelo id
@@ -58,7 +58,7 @@ module.exports = function(app){
             */
             if(result.length == 0){
                 resp.status(404);
-                resp.send({"message":"usuario não encontrado"});
+                resp.send({"message":"pergunta não encontrada"});
                 return;
             }
 
@@ -67,15 +67,18 @@ module.exports = function(app){
              */
             if(exception){
                 resp.status(500);
-                resp.send({"mensagem":"erro ao buscar usuário"});
+                resp.send({"mensagem":"erro ao buscar pergunta"});
                 console.log(exception);
                 return;
             }
 
+            var service = new app.services.perguntaService();
+            var dados = service.JsonGet(result);
+
             /**
              * se usuário é encontrado, retorna a posição 0, pq como buscamos pelo id, deve ter apenas um usuário
              */
-            resp.send(result[0]);
+            resp.send(dados[0]);
         });
         
     });
