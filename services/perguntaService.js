@@ -12,9 +12,9 @@ class perguntaService{
     validarPerguntas(data) {
         var teste = 0 ;
         var alternativas = ['a','b','c','d','e'];
-
-       
         
+        
+
         // Verificar se existe letras duplicadas ou sem ordem
         for (var i=0; i<5;i++){
             if(data.respostas[i].label != alternativas[i]){
@@ -41,11 +41,12 @@ class perguntaService{
         }
 
         //Verificar se está true or false
+        /*
         for (var i=0; i<5;i++){
            if(data.respostas[i].condicao != 'true' || data.respostas[i].condicao != 'false' ){
                return {status: false , message: "A condição deve ser true ou false" };
             }
-        }
+        }*/
 
         //Verificar se existe mais de uma resposta true
         for (var i=0; i<5;i++){
@@ -61,10 +62,11 @@ class perguntaService{
             }
         }
         //Verificar categoria
+        /*
         if(data.categoria != '1' || data.categoria != '2' || data.categoria != '3'){
             return {status: false , message: "Só existem a categoria 1, 2 e 3"}
-        }
-        
+        }*/
+    
         return {status: true};
     }
 }

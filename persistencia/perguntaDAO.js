@@ -10,7 +10,7 @@ class perguntaDAO{
 
     create(pergunta_resposta,callback){
         try {
-            this._con.querry('INSERT INTO pergunta_resposta set ?', pergunta_resposta, callback) 
+            this._con.query('INSERT INTO pergunta_resposta set ?', pergunta_resposta, callback) 
         } catch (error) {
             console.log(error);
         }
