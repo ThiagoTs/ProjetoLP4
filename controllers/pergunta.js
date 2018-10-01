@@ -4,9 +4,9 @@ module.exports = function(app){
     /** GET /usuario
      *  rota que obtém lista de usuários (find all)
      */
-    app.get('/usuario', function(req, resp){
+    app.get('/pergunta', function(req, resp){
         var con = app.persistencia.connectionFactory;
-        var dao = new app.persistencia.usuarioDAO(con);
+        var dao = new app.persistencia.perguntaDAO(con);
         dao.findAll(function(exception, result){
             if(exception){
                 resp.status(500);
@@ -16,7 +16,7 @@ module.exports = function(app){
 
             if(result.length == 0){
                 resp.status(404);
-                resp.send({"message":"usuario não encontrado"});
+                resp.send({"message":"pergunta não encontrada"});
                 return;
             }
 
@@ -25,13 +25,16 @@ module.exports = function(app){
              */
             if(exception){
                 resp.status(500);
-                resp.send({"mensagem":"erro ao buscar usuário"});
+                resp.send({"mensagem":"erro ao buscar pergunta"});
                 console.log(exception);
                 return;
             }
 
+            var service = new app.services.perguntaService();
+            var dados = service.JsonGet(result);
+
             resp.status(200);
-            resp.send(result);
+            resp.send(dados);
         });
     });
 
@@ -216,10 +219,10 @@ module.exports = function(app){
 /** DELETE /usuario 
  *  rota que permite deletar um usuário existente
 */
-app.delete('/usuario/:id', function(req, resp){
+app.delete('/pergunta/:id', function(req, resp){
     dado = req.params;
     var con = app.persistencia.connectionFactory;
-    var dao = new app.persistencia.usuarioDAO(con);
+    var dao = new app.persistencia.perguntaDAO(con);
 
     /**
      * primeira fase: buscar dados 
@@ -227,7 +230,7 @@ app.delete('/usuario/:id', function(req, resp){
     dao.findById(dado.id, function(exception, result){
         if(exception){
             resp.status(500);
-            resp.send({"mensagem":"erro ao alterar usuário"});
+            resp.send({"mensagem":"erro ao alterar pergunta"});
             console.log(exception);
             return;
         }
@@ -237,7 +240,7 @@ app.delete('/usuario/:id', function(req, resp){
          */
         if(!result || result.length == 0){
             resp.status(404);
-            resp.send({"message":"usuario não encontrado"});
+            resp.send({"message":"pergunta não encontrada"});
             return;
         }
         /** deleção lógica */
@@ -247,7 +250,7 @@ app.delete('/usuario/:id', function(req, resp){
              */
             if(exception){
                 resp.status(500);
-                resp.send({"mensagem":"erro ao deletar usuário"});
+                resp.send({"mensagem":"erro ao deletar pergunta"});
                 console.log(exception);
                 return;
             }
@@ -256,7 +259,7 @@ app.delete('/usuario/:id', function(req, resp){
              * se ocorreu tudo bem
              */
             resp.status(200);
-            resp.send({"message":"Deletado com sucesso"});
+            resp.send({"message":"Deletada com sucesso"});
         });
     })
 
