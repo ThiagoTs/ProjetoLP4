@@ -1,14 +1,15 @@
 class perguntaService{
     constructor(){}
 
-    JsonGet(){
+    JsonGet(data){
         for(var i=0; i < data.length; i++){
             data[i].respostas = JSON.parse(data[i].respostas); 
-        } 
+        }
+
         return data;
-      }
     }
-    validarPerguntas(data){
+
+    validarPerguntas(data) {
         var teste = 0 ;
         var alternativas = ['a','b','c','d','e'];
 
@@ -59,11 +60,14 @@ class perguntaService{
                 }
             }
         }
+        //Verificar categoria
+        if(data.categoria != '1' || data.categoria != '2' || data.categoria != '3'){
+            return {status: false , message: "Só existem a categoria 1, 2 e 3"}
+        }
         
         return {status: true};
     }
-
-
+}
 module.exports =  function(){
     return perguntaService;
 }
