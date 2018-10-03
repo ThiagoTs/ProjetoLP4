@@ -12,10 +12,10 @@ module.exports = function(){
     app.use(bodyParse.json());
 
     consign()
-    .include('controllers')
-    .then('persistencia')
-    .then('services')
-    .into(app);
+        .include('controllers')
+        .then('persistencia')
+        .then('services')
+        .into(app);
 
 return app;
 }
