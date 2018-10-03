@@ -88,7 +88,7 @@ module.exports = function(app){
     */
     app.post('/pergunta', function(req, resp){
         /**Propriedade que permite manipular o body da requisição */
-        data = req.body;
+        var  data = req.body;
     
         /**objetos quer me permite conectar no banco e maninpular as operações */
         var con = app.persistencia.connectionFactory;
@@ -98,7 +98,7 @@ module.exports = function(app){
          * valida se os dados estão corretos conforme regra de negócio
          */
         var service = new app.services.perguntaService();
-        response = service.validarPerguntas(data);
+        var response = service.validarPerguntas(data);
         if(!response.status){
             resp.status(400);
             resp.json({"message": response.message});   

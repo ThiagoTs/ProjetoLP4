@@ -15,6 +15,18 @@ class perguntaDAO{
             console.log(error);
         }
     }
+    /**
+     * Busca todos as perguntas cadastradas
+     * @param callback - função de retorno
+     */
+    
+    findAll(callback){
+        try {
+            this._con.query('SELECT * FROM pergunta_resposta where deletado = 0', callback);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     /**
      * Busca a pergunta_resposta a partir do id passado na requisição
@@ -22,7 +34,7 @@ class perguntaDAO{
      * @param callback - função de retorno 
     */
 
-    findAll(id, callback){
+    findById(id, callback){
         try {
             this._con.query('SELECT * FROM pergunta_resposta where pergunta_resposta.id = ? and deletado = 0', id, callback);
         } catch (error) {
