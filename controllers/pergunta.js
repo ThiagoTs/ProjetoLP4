@@ -91,7 +91,8 @@ module.exports = function (app) {
     app.post('/pergunta', function(req, resp) {
         /**Propriedade que permite manipular o body da requisição */
         var data = req.body;
-        console.log(data);
+        
+        
         /**objetos quer me permite conectar no banco e maninpular as operações */
         var con = app.persistencia.connectionFactory;
         var dao = new app.persistencia.perguntaDAO(con);

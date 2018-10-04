@@ -23,6 +23,7 @@ class perguntaService {
             }
         }
         //Verificar se a descrição estava vazia
+        teste == 0;
         for (var i = 0; i < 5; i++) {
             if (data.respostas[i].descricao == '') {
                 teste++;
@@ -32,8 +33,9 @@ class perguntaService {
         }
 
         //Verificar se a condição estava vazia
+        teste == 0;
         for (var i = 0; i < 5; i++) {
-            teste = 0;
+            
             if (data.respostas[i].condicao == '') {
                 teste++;
             } if (teste >= 1) {
@@ -42,17 +44,21 @@ class perguntaService {
         }
 
         //Verificar se está true or false
-        /*
-        for (var i=0; i<5;i++){
-           if(data.respostas[i].condicao !== 'true' || data.respostas[i].condicao !== 'false' ){
-               return {status: false , message: "A condição deve ser true ou false" };
+
+        for (var i = 0; i < 5; i++) {
+            if (data.respostas[i].condicao == 'true') {
+            } else {
+                if (data.respostas[i].condicao == 'false') {
+                } else {
+                    return { status: false, message: "As condições devem ser true ou false" };
+                }
             }
-        }*/
+        }
 
         //Verificar se existe mais de uma resposta true
+        teste == 0;
         for (var i = 0; i < 5; i++) {
-            teste = 0;
-            if (data.respostas[i].condicao = 'true') {
+            if (data.respostas[i].condicao == 'true') {
                 teste++;
             } if (teste > 1) {
                 return { status: false, message: "Só pode existir uma resposta verdadeira" };
@@ -63,16 +69,28 @@ class perguntaService {
             }
         }
         //Verificar categoria
-        
-        if (data.categoria !== '1') {
+
+        if (data.categoria == '1') {
         } else {
-            if (!data.categoria !== '2') {
+            if (data.categoria == '2') {
             } else {
-                if (!data.categoria !== '3') {
+                if (data.categoria == '3') {
+                } else {
                     return { status: false, message: "Só existem a categoria 1, 2 e 3" };
                 }
             }
         }
+        //Validar linha de dados
+        if (!data.pergunta) {  
+            return { status: false, message: "Pergunta deve ser obrigatória "};
+        }
+        if (!data.respostas) { 
+           return { status: false, message: "Resposta Obrigatória" };   
+        }
+        if (!data.categoria) {
+            return { status: false, message: "Categoria Obrigatória" };
+        }
+       
 
         return { status: true };
     }
