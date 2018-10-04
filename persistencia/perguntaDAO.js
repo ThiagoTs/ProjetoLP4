@@ -8,13 +8,13 @@ class perguntaDAO{
      * @param callback - resposta de retorno
     */
 
-        create(pergunta_resposta,callback){
-            try {
-                this._con.query('INSERT INTO pergunta_resposta set ?', pergunta_resposta, callback) 
-            } catch (error) {
-                console.log(error);
-            }
+    create(pergunta_resposta,callback){
+        try {
+            this._con.query('INSERT INTO pergunta_resposta set ?', pergunta_resposta, callback) 
+        } catch (error) {
+             console.log(error);
         }
+    }
     /**
      * Busca todos as perguntas cadastradas
      * @param callback - função de retorno
