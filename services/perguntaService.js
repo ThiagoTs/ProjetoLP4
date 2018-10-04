@@ -23,28 +23,20 @@ class perguntaService {
             }
         }
         //Verificar se a descrição estava vazia
-        teste == 0;
         for (var i = 0; i < 5; i++) {
             if (data.respostas[i].descricao == '') {
-                teste++;
-            } if (teste >= 1) {
                 return { status: false, message: "Descrição esta vazia" };
             }
         }
 
         //Verificar se a condição estava vazia
-        teste == 0;
         for (var i = 0; i < 5; i++) {
-            
             if (data.respostas[i].condicao == '') {
-                teste++;
-            } if (teste >= 1) {
                 return { status: false, message: "A condição esta vazia" };
             };
         }
 
         //Verificar se está true or false
-
         for (var i = 0; i < 5; i++) {
             if (data.respostas[i].condicao == 'true') {
             } else {
@@ -60,9 +52,11 @@ class perguntaService {
         for (var i = 0; i < 5; i++) {
             if (data.respostas[i].condicao == 'true') {
                 teste++;
-            } if (teste > 1) {
+            } 
+            if (teste > 1) {
                 return { status: false, message: "Só pode existir uma resposta verdadeira" };
-            } if (i == 4) {
+            } 
+            if (i == 4) {
                 if (teste == 0) {
                     return { status: false, message: "Deve existir pelo menos uma resposta verdadeira" };
                 }

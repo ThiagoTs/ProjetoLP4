@@ -92,7 +92,7 @@ module.exports = function (app) {
         /**Propriedade que permite manipular o body da requisição */
         var data = req.body;
         
-        
+
         /**objetos quer me permite conectar no banco e maninpular as operações */
         var con = app.persistencia.connectionFactory;
         var dao = new app.persistencia.perguntaDAO(con);
@@ -100,7 +100,7 @@ module.exports = function (app) {
         /**
          * valida se os dados estão corretos conforme regra de negócio
          */
-        
+        console.log(data);
         var service = new app.services.perguntaService();
         response = service.validarPerguntas(data);
         console.log(response);
@@ -256,7 +256,7 @@ module.exports = function (app) {
             }
 
             /**
-             * Verifica se usário existe
+             * Verifica se a pergunta existe
              */
             if (!result || result.length == 0) {
                 resp.status(404);
