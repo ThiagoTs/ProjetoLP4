@@ -76,7 +76,7 @@ class perguntaService {
         }
         //Validar linha de dados
         if (!data.pergunta) {  
-            return { status: false, message: "Pergunta deve ser obrigatória "};
+            return { status: false, message: "Pergunta deve ser obrigatória " };
         }
         if (!data.respostas) { 
            return { status: false, message: "Resposta Obrigatória" };   

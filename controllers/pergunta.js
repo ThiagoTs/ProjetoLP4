@@ -88,7 +88,7 @@ module.exports = function (app) {
     /** POST /pergunta 
      *  rota que permite criar uma nova pergunta
     */
-    app.post('/pergunta', function(req, resp) {
+    app.post('/perguntassss', function(req, resp) {
         /**Propriedade que permite manipular o body da requisição */
         var data = req.body;
         
