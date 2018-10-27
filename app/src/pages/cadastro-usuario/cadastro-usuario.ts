@@ -20,6 +20,8 @@ export class CadastroUsuarioPage {
   private usuario: Usuario;
   private senha: string;
   private confirmaSenha: string;
+  private error = { condicao: false, message: '' };
+  private success = { condicao: false, message: '' };
 
   constructor(
     public navCtrl: NavController,
@@ -30,11 +32,16 @@ export class CadastroUsuarioPage {
     this.usuario = new Usuario();
     this.senha = "";
     this.confirmaSenha = "";
+
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CadastroUsuarioPage');
-  }
+
   salvar(){
+
+    if (this.senha !== this.confirmaSenha) {
+      this.error.condicao = true;
+      this.error.message = 'Senha e confirma senha estão incorretas';
+    }
+    /*
     console.log(this.usuario);
     this.usuario.senha = this.senha;
 
@@ -45,6 +52,11 @@ export class CadastroUsuarioPage {
       }
       
     );
+      */
   }
+ 
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad CadastroUsuarioPage');
+  }
 }

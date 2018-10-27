@@ -36,6 +36,14 @@
       <ion-input [(ngModel)]="usuario.perfil" name="perfil"></ion-input>
     </ion-item>
 
+    <div *ngIf="error.condicao" text-center margin-top >
+      <p ion-text color="danger">{{error.message}}</p>
+    </div>
+    <div *ngIf="success.condicao" text-center margin-top>
+      <p ion-text color="primary">{{success.message}}</p>
+    </div>
+
+
     <div text-center margin-top>
       <button ion-button color="secundary">
         Salvar
