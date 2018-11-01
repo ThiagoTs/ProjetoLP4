@@ -31,7 +31,7 @@ export class ListaUsuarioPage {
   ) {
 
     let load = _loadCtr.create(
-      {content: "Carregando..."}
+      { content: "Carregando..." }
     );
     load.present();
 
@@ -40,7 +40,7 @@ export class ListaUsuarioPage {
         title: "Falha na Conexão",
         subTitle: "Não foi possivel carregar a lista de usuários",
         buttons: [
-          {text: 'OK'}
+          { text: 'OK' }
         ]
       }
     )

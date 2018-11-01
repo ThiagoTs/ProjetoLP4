@@ -41,7 +41,7 @@ export class CadastroUsuarioPage {
       this.error.condicao = true;
       this.error.message = 'Senha e confirma senha estão incorretas';
     }
-    /*
+    
     console.log(this.usuario);
     this.usuario.senha = this.senha;
 
@@ -52,7 +52,7 @@ export class CadastroUsuarioPage {
       }
       
     );
-      */
+      
   }
  
 
