@@ -1,3 +1,4 @@
+import { VisualizarUsuarioPage } from './../visualizar-usuario/visualizar-usuario';
 import { CadastroUsuarioPage } from './../cadastro-usuario/cadastro-usuario';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
@@ -66,6 +67,10 @@ export class ListaUsuarioPage {
 
   avancarCadastroUsuario() {
     this.navCtrl.push(CadastroUsuarioPage.name);
+  }
+  seleciona(user: Usuario) {
+    this.navCtrl.push(VisualizarUsuarioPage.name,
+      { usuarioSelecionado: user });
   }
 
 }
