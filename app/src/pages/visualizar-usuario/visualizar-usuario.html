@@ -15,4 +15,26 @@
 
 <ion-content padding>
 
+  <ion-item-group>
+
+    <ion-item-divider color="light">
+      USUÁRIO:
+    </ion-item-divider>
+    <ion-item>{{ usuario.nome }}</ion-item>
+    <ion-item>{{ usuario.email }}</ion-item>
+
+  </ion-item-group>
+
+  <ion-row>
+    <ion-col text-center>
+      <button ion-button icon-only>
+        <ion-icon name="md-build"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col text-center>
+        <button ion-button icon-only (click)="confirmar()">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+    </ion-col>
+  </ion-row>
 </ion-content>

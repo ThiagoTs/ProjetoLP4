@@ -1,14 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Usuario } from '../../modules/usuario';
-
-/**
- * Generated class for the CadastroUsuarioPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { HttpClient } from '@angular/common/http';
 
 @IonicPage()
 @Component({
@@ -17,46 +10,77 @@ import { Usuario } from '../../modules/usuario';
 })
 export class CadastroUsuarioPage {
 
-  private usuario: Usuario;
+  private orderForm;
+  public usuario: Usuario;
   private senha: string;
-  private confirmaSenha: string;
-  private error = { condicao: false, message: '' };
-  private success = { condicao: false, message: '' };
+  private senha_confirma:string;
+  private error = { condicao: false, message:''};
+  private success = { condicao: false, message: ''};
 
   constructor(
-    public navCtrl: NavController,
+    public navCtrl: NavController, 
     public navParams: NavParams,
-    private _http: HttpClient
-
+    public http: HttpClient,
   ) {
     this.usuario = new Usuario();
-    this.senha = "";
-    this.confirmaSenha = "";
-
   }
 
   salvar(){
-
-    if (this.senha !== this.confirmaSenha) {
-      this.error.condicao = true;
-      this.error.message = 'Senha e confirma senha estão incorretas';
-    }
+    this.error.condicao = false;
+    this.validarDados();
+    console.log(this.error.condicao);
     
-    console.log(this.usuario);
-    this.usuario.senha = this.senha;
+    if(!this.error.condicao){
+      this.usuario.senha = this.senha;
 
-    this._http.post("http://localhost:3000/usuario",this.usuario)
-    .subscribe(
-      res => {
-        console.log(res);
-      }
-      
-    );
-      
+      this.http.post("http://localhost:3000/usuario", 
+      this.usuario
+        ).subscribe(res => {
+          console.log(res);
+          this.error.condicao = false;
+          this.error.message = '';
+          this.success.condicao = true;
+          this.success.message = "Criado com sucesso"
+          this.usuario = new Usuario();
+          this.senha = "";
+          this.senha_confirma = "";
+          
+        }, (err) => {
+          console.log(err);
+        });
+
+    }
   }
- 
+
+  validarDados(){
+    if(!this.usuario.nome){
+      this.error.condicao = true;
+      this.error.message = "Nome, campo obrigatório!";
+    }
+
+    if(!this.usuario.email){
+      this.error.condicao = true;
+      this.error.message = "Email, campo obrigatório!";
+    }
+
+    if(!this.senha || !this.senha_confirma){
+      this.error.condicao = true;
+      this.error.message = "Senha e confirma senha, campos obrigatórios!";
+    }
+
+    if(this.senha !== this.senha_confirma){
+      this.error.condicao = true;
+      this.error.message = "Senha e confirma senha devem ser iguais";
+    }
+
+    if(!this.usuario.perfil){
+      this.error.condicao = true;
+      this.error.message = "Perfil, campo obrigatório!";
+    }
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroUsuarioPage');
   }
+
 }

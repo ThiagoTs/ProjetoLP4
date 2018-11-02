@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Cadastro de usuario</ion-title>
+    <ion-title>Cadastro Usuário</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,39 +16,40 @@
 <ion-content padding>
   <form (ngSubmit)="salvar()">
     <ion-item>
-      <ion-label stacked> Nome:</ion-label>
+      <ion-label stacked>Nome: </ion-label>
       <ion-input [(ngModel)]="usuario.nome" name="nome"></ion-input>
     </ion-item>
+
     <ion-item>
-      <ion-label stacked> Email:</ion-label>
+      <ion-label stacked>Email: </ion-label>
       <ion-input [(ngModel)]="usuario.email" name="email"></ion-input>
     </ion-item>
+
     <ion-item>
-      <ion-label stacked> Senha:</ion-label>
+      <ion-label stacked>Senha: </ion-label>
       <ion-input type="password" [(ngModel)]="senha" name="senha"></ion-input>
     </ion-item>
+
     <ion-item>
-      <ion-label stacked> Confirma Senha:</ion-label>
-      <ion-input type="password" [(ngModel)]="confirmaSenha" name="confirmaSenha"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked> Perfil:</ion-label>
-      <ion-input [(ngModel)]="usuario.perfil" name="perfil"></ion-input>
+        <ion-label stacked>Confirma Senha: </ion-label>
+        <ion-input type="password" [(ngModel)]="senha_confirma" name="senha_confirma"></ion-input>
     </ion-item>
 
-    <div *ngIf="error.condicao" text-center margin-top >
-      <p ion-text color="danger">{{error.message}}</p>
+    <ion-item>
+      <ion-label stacked>Perfil: </ion-label>
+      <ion-input [(ngModel)]="usuario.perfil" name="perfil" clearInput></ion-input>
+    </ion-item>
+
+    <div *ngIf="error.condicao" text-center margin-top>
+        <p ion-text color="danger">{{error.message}}</p>
     </div>
+
     <div *ngIf="success.condicao" text-center margin-top>
-      <p ion-text color="primary">{{success.message}}</p>
+        <p ion-text color="primary">{{success.message}}</p>
     </div>
-
-
+    
     <div text-center margin-top>
-      <button ion-button color="secundary">
-        Salvar
-      </button>
+      <button ion-button color="secondary">Salvar</button>
     </div>
   </form>
-
 </ion-content>
