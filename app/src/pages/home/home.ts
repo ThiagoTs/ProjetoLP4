@@ -7,13 +7,12 @@ import { ListaUsuarioPage } from '../lista-usuario/lista-usuario';
   templateUrl: 'home.html'
 })
 export class HomePage {
-//CONTROLER DA HOME
-
 
   listaUsuarios = ListaUsuarioPage;
   constructor(public navCtrl: NavController) {
 
   }
+
   avancarListaUsuario(){
     this.navCtrl.push(ListaUsuarioPage.name);
   }

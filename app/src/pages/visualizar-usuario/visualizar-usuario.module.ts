@@ -9,5 +9,8 @@ import { VisualizarUsuarioPage } from './visualizar-usuario';
   imports: [
     IonicPageModule.forChild(VisualizarUsuarioPage),
   ],
+  exports:[
+    VisualizarUsuarioPage
+  ]
 })
 export class VisualizarUsuarioPageModule {}

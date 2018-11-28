@@ -9,7 +9,7 @@ import { ListaUsuarioPage } from './lista-usuario';
   imports: [
     IonicPageModule.forChild(ListaUsuarioPage),
   ],
-  exports: [
+  exports:[
     ListaUsuarioPage
   ]
 })
