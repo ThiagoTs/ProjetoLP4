@@ -1,5 +1,5 @@
 <!--
-  Generated template for the ListaPerguntaRespPage page.
+  Generated template for the ListaPeguntaRespPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,12 +7,22 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>lista-pergunta-resp</ion-title>
+
+    <ion-title>Lista de pergunta</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let pergunta of perguntas" (click)="seleciona(pergunta)"  >
+      <P>Pergunta  </P>
+      <h2>{{ pergunta.pergunta }}</h2>
+     
+    </ion-item>
+  </ion-list>
+
 
 </ion-content>

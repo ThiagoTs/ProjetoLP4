@@ -1,18 +1,29 @@
-<!--
-  Generated template for the CadastroDescricaoPerguntaPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>cadastro-descricao-pergunta</ion-title>
+    <ion-title>Cadastro de Descriçao</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Descriçao Resposta: </ion-label>
+        <ion-input [(ngModel)]="respostas.descricao" name="descricao" placeholder="Digite a Descriçao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Condiçao </ion-label>
+        <ion-select [(ngModel)]="respostas.condicao" name="condicao" placeholder="Selecione">
+          <ion-option>True</ion-option>
+          <ion-option selected>False</ion-option>
+        </ion-select>
+      </ion-item>
 
+
+
+    </ion-list>
+
+    <div text-center margin-top>
+      <button ion-button color="secondary" (click)="ok()">OK</button>
+    </div>
+  </form>
 </ion-content>

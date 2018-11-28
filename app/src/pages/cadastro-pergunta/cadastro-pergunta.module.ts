@@ -1,3 +1,5 @@
+
+
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { CadastroPerguntaPage } from './cadastro-pergunta';
@@ -9,5 +11,9 @@ import { CadastroPerguntaPage } from './cadastro-pergunta';
   imports: [
     IonicPageModule.forChild(CadastroPerguntaPage),
   ],
+  exports:[
+    CadastroPerguntaPage
+  ]
 })
 export class CadastroPerguntaPageModule {}
+

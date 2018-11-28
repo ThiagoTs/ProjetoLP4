@@ -1,18 +1,67 @@
 <!--
-  Generated template for the CadastroPerguntaPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
+     
+  Tela dos campos de opções
 -->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>cadastro-pergunta</ion-title>
+    <ion-title>Cadastro de Perguntas</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+  <form (ngSubmit)="verficaSalvarEditar()">
+     
+    <ion-item>
+          <ion-label stacked>Pergunta: </ion-label>
+          <ion-input placeholder="Digite a Pergunta" [(ngModel)]="pergunta.pergunta" name="pergunta"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Respostas: </ion-label>
+          </ion-item>
+          <ion-item>
+              <ion-label stacked>Opção A: </ion-label>
+              <button ion-button outline item-end icon-start (click)="cadastroDescricaoA()">  <ion-icon name="add-circle"></ion-icon></button>
+            </ion-item>
+            
+      <ion-item>
+        <ion-label stacked>Opção B: </ion-label>
+        <button ion-button outline item-end icon-start (click)="cadastroDescricaoB()">  <ion-icon name="add-circle"></ion-icon></button>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>Opção C: </ion-label>
+        <button ion-button outline item-end icon-start (click)="cadastroDescricaoC()">  <ion-icon name="add-circle"></ion-icon></button>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>Opção D: </ion-label>
+        <button ion-button outline item-end icon-start (click)="cadastroDescricaoD()">  <ion-icon name="add-circle"></ion-icon></button>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>Opção E: </ion-label>
+        <button ion-button outline item-end icon-start (click)="cadastroDescricaoE()">  <ion-icon name="add-circle"></ion-icon></button>
+      </ion-item>
+      <ion-item>
+          <ion-label stacked>Categoria: </ion-label>
+          <ion-input placeholder="Digite a categoria" [(ngModel)]="pergunta.categoria" name="categoria" ></ion-input>
+        </ion-item>
 
-</ion-content>
+        <div *ngIf="error.condicao" text-center margin-top>
+          <p ion-text color="danger">{{error.message}}</p>
+      </div>
+  
+     
+      <div *ngIf="success.condicao" text-center margin-top>
+          <p ion-text color="primary">{{success.message}}</p>
+      </div>
+      
+      <div text-center margin-top>
+        <button ion-button color="secondary">Salvar</button>
+      </div>
+
+       
+  </form>
+  </ion-content>
