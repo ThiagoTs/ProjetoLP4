@@ -3,12 +3,6 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import { Pergunta } from '../../modules/pergunta';
 import { HttpClient } from '@angular/common/http';
 import { CadastroPerguntaPage } from '../cadastro-pergunta/cadastro-pergunta';
-/**
- * Generated class for the VisualizarPerguntaRespPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -17,37 +11,36 @@ import { CadastroPerguntaPage } from '../cadastro-pergunta/cadastro-pergunta';
 })
 export class VisualizarPerguntaRespPage {
  perguntas : Pergunta;
- 
  load;
+
   conteudoAlert = {titulo:'', mensagem:''}
   constructor(
     public navCtrl: NavController,
-     public navParams: NavParams,
-     private _alertCtrl: AlertController,
+    public navParams: NavParams,
+    private _alertCtrl: AlertController,
     private _loadCtr: LoadingController,
     private _http: HttpClient
-
-     
-     )
-     
-     {
-    
-      this.perguntas = this.navParams.get('perguntaSelecionada');
-      this.load = _loadCtr.create(
-        {content: "Carregando..."}
-      );
-  
-    }
-
+  ){
+    this.perguntas = this.navParams.get('perguntaSelecionada');
+    this.load = _loadCtr.create(
+      {content: "Carregando..."}
+    );
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VisualizarPerguntaRespPage.name,'+'respostas');
   }
 
-  confirma() {
+  editar(){
+    this.navCtrl.push(CadastroPerguntaPage.name, {
+      perguntaSelecionada: this.perguntas
+    });
+  }
+
+  confirmaExcluir() {
     let alert = this._alertCtrl.create({
-      title: 'Excluir Usuário',
-      message: 'Você tem certeza que deseja excluir este usuário?',
+      title: 'Excluir Pergunta',
+      message: 'Você tem certeza que deseja excluir esta pergunta?',
       buttons: [
         {
           text: 'Cancel',
@@ -100,12 +93,6 @@ export class VisualizarPerguntaRespPage {
       ]
     });
     alert.present();
-  }
-
-  editar(){
-    this.navCtrl.push(CadastroPerguntaPage.name, {
-      perguntaSelecionada: this.perguntas
-    });
   }
 
 }

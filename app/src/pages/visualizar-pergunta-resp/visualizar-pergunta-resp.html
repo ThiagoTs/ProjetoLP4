@@ -8,10 +8,6 @@
   </ion-header>
   <ion-content padding>
     <ion-item-group>
-      <ion-item-divider color="light">
-        Respostas
-      </ion-item-divider>
-
       <ion-item>
         <p>Perguntas</p><br/>
 
@@ -21,29 +17,26 @@
 
       <ion-item *ngFor="let resposta of perguntas.respostas">
         <p>Resposta</p><br/>
-       Lestras: {{ resposta.label }}<br/>
-      Descricao: {{resposta.descricao}}<br/>
-      Condicao: {{resposta.condicao}}
+        Letra: {{ resposta.label }}<br/>
+        Descrição: {{resposta.descricao}}<br/>
+        Condição: {{resposta.condicao}}
       </ion-item>
       <ion-item>
         <p>Categoria</p>
         {{ perguntas.categoria }}</ion-item>
-
-    </ion-item-group>
+      </ion-item-group>
   
     <ion-row>
         <ion-col text-center>
-          
           <button ion-button icon-only (click)="editar()">
               <ion-icon name="md-build"></ion-icon>
           </button>
-          
         </ion-col>
+
         <ion-col text-center>
-            <button ion-button icon-only (click)="confirma()">
+            <button ion-button icon-only (click)="confirmaExcluir()">
               <ion-icon name="trash"></ion-icon>
             </button>
-  
         </ion-col>
       </ion-row>
   
