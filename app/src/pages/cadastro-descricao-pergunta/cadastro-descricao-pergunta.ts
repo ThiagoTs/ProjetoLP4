@@ -42,24 +42,14 @@ export class CadastroDescricaoPerguntaPage {
     );
     
   }
-
   ionViewDidLoad() {
-   // console.log('ionViewDidLoad CadastroDescricaoPerguntaPage');
+  
   }
- 
   ok(){
-    
-
     this.navCtrl.getPrevious().data.userBack;
     this.navCtrl.pop();
-   // console.log(this.respostas);
-
-    
+   
   }
-
-  
-
-  
   ionViewWillLeave() {  
     this.navCtrl.getPrevious().data.userBack = this.respostas;
   
