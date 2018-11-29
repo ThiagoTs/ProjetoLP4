@@ -50,7 +50,7 @@ export class ListaPerguntaRespPage {
 
   ionViewDidLoad() {
     
-    this.http.get<Pergunta[]>("http://localhost:3000/pergunta_resposta")
+    this.http.get<Pergunta[]>("http://localhost:3000/pergunta")
       .subscribe(
         (users) =>{
           console.log(users);

@@ -122,7 +122,7 @@ export class CadastroPerguntaPage {
   }
 
   salvar() {
-    this.http.post("http://localhost:3000/pergunta_resposta",
+    this.http.post("http://localhost:3000/perguntas",
       this.pergunta
     ).subscribe(res => {
       

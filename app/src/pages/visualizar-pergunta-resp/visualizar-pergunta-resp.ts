@@ -64,7 +64,7 @@ export class VisualizarPerguntaRespPage {
   excluir(){
     this.load.present();
     console.log("http://localhost:3000//" + this.perguntas.id);
-    this._http.delete("http://localhost:3000/pergunta_resposta/" + this.perguntas.id)
+    this._http.delete("http://localhost:3000/pergunta/" + this.perguntas.id)
     .subscribe(
       (message) => {
         console.log(message);
