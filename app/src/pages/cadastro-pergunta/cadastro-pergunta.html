@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form (ngSubmit)="verficaSalvarEditar()">
+  <form>
 
     <ion-item>
       <ion-label stacked>Pergunta: </ion-label>
@@ -21,28 +21,28 @@
       <ion-label stacked>Respostas: </ion-label>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Opção A: </ion-label>
+      <ion-label stacked>Alternativa A: </ion-label>
       <button ion-button icon-only item-end (click)="cadastroDescricaoA()">
         <ion-icon name="add-circle"></ion-icon>
       </button>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Opção B: </ion-label>
+      <ion-label stacked>Alternativa B: </ion-label>
       <button ion-button icon-only item-end (click)="cadastroDescricaoB()">
         <ion-icon name="add-circle"></ion-icon>
       </button>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Opção C: </ion-label>
+      <ion-label stacked>Alternativa C: </ion-label>
       <button ion-button icon-only item-end (click)="cadastroDescricaoC()">
         <ion-icon name="add-circle"></ion-icon>
       </button>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Opção D: </ion-label>
+      <ion-label stacked>Alternativa D: </ion-label>
 
       <button ion-button icon-only item-end (click)="cadastroDescricaoD()">
 
@@ -52,7 +52,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Opção E: </ion-label>
+      <ion-label stacked>Alternativa E: </ion-label>
       <button ion-button icon-only item-end  (click)="cadastroDescricaoE()">
         <ion-icon name="add-circle"></ion-icon>
       </button>
@@ -72,7 +72,7 @@
     </div>
 
     <div text-center margin-top>
-      <button ion-button color="secondary">Salvar</button>
+      <button ion-button color="secondary" (click)="verificaSalvar()">Salvar</button>
     </div>
 
 

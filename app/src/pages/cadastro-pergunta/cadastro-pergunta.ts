@@ -20,9 +20,8 @@ import { CadastroDescricaoPerguntaPage } from '../cadastro-descricao-pergunta/ca
 export class CadastroPerguntaPage {
 
   public resposta: Resposta;
-  public aux2: boolean = false;
+ 
 
-  private orderForm;
 
   public pergunta: Pergunta;
   public respostas: Resposta;
@@ -34,13 +33,12 @@ export class CadastroPerguntaPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public http: HttpClient,
+    
 
   ) {
 
     this.pergunta = new Pergunta();
     this.respostas = new Resposta();
-
-    this.respostas = this.navParams.get('respostaSelecionada');
 
   }
 
@@ -56,49 +54,60 @@ export class CadastroPerguntaPage {
     if (this.navParams.get('userBack')) {
       /** obtenho o parâmetro por meio do método get e inserio na lista pelo método push */
 
-      var aux = this.navParams.get('userBack');
-      this.resposta.label = aux.label;
-      this.resposta.descricao = aux.descricao;
-      this.resposta.condicao = aux.condicao;
+      var newResp = this.navParams.get('userBack');
+      this.resposta.label = newResp.label;
+      this.resposta.descricao = newResp.descricao;
+      this.resposta.condicao = newResp.condicao;
+
      
-      if(!this.validarRespota(this.resposta)){
-        this.pergunta.respostas.push(this.resposta);
+     
+      if(!this.setaRespostas(this.resposta)){
+        //this.pergunta.respostas.push(this.resposta);
+        console.log('Setei');
       }
     }
   }
   
-  validarRespota(as: Resposta): boolean {
-    if (this.aux2) {
+  setaRespostas(resp: Resposta): boolean {
+
+    console.log(resp.condicao, resp.descricao, resp.label);
+    this.pergunta = new Pergunta;
+    
       for (var i = 0; i < 5; i++) {
-        if (as.label === 'a') {
+        if (resp.label === 'a') {
+
           this.pergunta.respostas[i].label = this.resposta.label;
           this.pergunta.respostas[i].descricao = this.resposta.descricao;
           this.pergunta.respostas[i].condicao = this.resposta.condicao;
+          console.log(this.pergunta.respostas[i].label)
           return true;
         } else {
-          if (as.label === 'b') {
+          if (resp.label === 'b') {
+            console.log('entrei aqui');
             this.pergunta.respostas[i].label = this.resposta.label
             this.pergunta.respostas[i].descricao = this.resposta.descricao;
             this.pergunta.respostas[i].condicao = this.resposta.condicao;
             return true;
           } else {
-            if (as.label === 'c') {
+            if (resp.label === 'c') {
               this.pergunta.respostas[i].label = this.resposta.label
               this.pergunta.respostas[i].descricao = this.resposta.descricao;
               this.pergunta.respostas[i].condicao = this.resposta.condicao;
               return true;
             } else {
-              if (as.label === 'd') {
+              if (resp.label === 'd') {
                 this.pergunta.respostas[i].label = this.resposta.label
                 this.pergunta.respostas[i].descricao = this.resposta.descricao;
                 this.pergunta.respostas[i].condicao = this.resposta.condicao;
                 return true;
               } else {
-                if (as.label === 'e') {
+                if (resp.label === 'e') {
                   this.pergunta.respostas[i].label = this.resposta.label
                   this.pergunta.respostas[i].descricao = this.resposta.descricao;
                   this.pergunta.respostas[i].condicao = this.resposta.condicao;
                   return true;
+                } else{
+                  return false;
                 }
               }
             }
@@ -106,62 +115,71 @@ export class CadastroPerguntaPage {
         }
 
       }
-
-
-    } else {
-      return false;
-    }
   }
 
+
   cadastroDescricaoA() {
-
+    this.respostas = new Resposta;
+    this.respostas.label = "a"
     this.navCtrl.push(CadastroDescricaoPerguntaPage.name, { respostaSelecionada: this.respostas });
-
-
-
 
   }
 
   cadastroDescricaoB() {
-
-    this.navCtrl.push(CadastroDescricaoPerguntaPage.name, { respostaSelecionada: this.resposta });
-
+    this.respostas = new Resposta;
+    this.respostas.label = "b"
+    this.navCtrl.push(CadastroDescricaoPerguntaPage.name, { respostaSelecionada: this.respostas });
+     
   }
 
   cadastroDescricaoC() {
-
-    this.navCtrl.push(CadastroDescricaoPerguntaPage.name, { respostaSelecionada: this.resposta });
+    this.respostas = new Resposta;
+    this.respostas.label = "c"
+    this.navCtrl.push(CadastroDescricaoPerguntaPage.name, { respostaSelecionada: this.respostas });
 
   }
 
   cadastroDescricaoD() {
-    this.navCtrl.push(CadastroDescricaoPerguntaPage.name, { respostaSelecionada: this.resposta });
+    this.respostas = new Resposta;
+    this.respostas.label = "d"
+    this.navCtrl.push(CadastroDescricaoPerguntaPage.name, { respostaSelecionada: this.respostas });
 
   }
 
   cadastroDescricaoE() {
-    this.navCtrl.push(CadastroDescricaoPerguntaPage.name, { respostaSelecionada: this.resposta });
+    this.respostas = new Resposta;
+    this.respostas.label = "e"
+    this.navCtrl.push(CadastroDescricaoPerguntaPage.name, { respostaSelecionada: this.respostas });
 
   }
-
 
   validarDados() {
+      
+    if(this.pergunta.respostas.length < 5){
+      this.error.condicao = true;
+      this.error.message = 'Não estão preenchido todas as respostas'
 
+    }
+    if(!this.pergunta.pergunta){
+      this.error.condicao = true;
+      this.error.message = 'A descrição da pergunta não está preenchida'
+    }
+    if(!this.pergunta.categoria){
+      this.error.condicao = true;
+      this.error.message = 'A categoria não está preenchida'
+    }
   }
 
 
-  verficaSalvarEditar() {
+  verificaSalvar() {
     this.error.condicao = false;
     this.validarDados();
 
     if (!this.error.condicao) {
 
-      if (this.pergunta.id) {
-        this.editar();
-      }
-      else {
         this.salvar();
-      }
+    }else{
+      console.log("Falha ao salvar");
     }
   }
 
@@ -180,9 +198,7 @@ export class CadastroPerguntaPage {
     });
   }
 
-  editar() {
-
-  }
+  
 
 }
 
