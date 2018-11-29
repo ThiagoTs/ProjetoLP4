@@ -1,14 +1,16 @@
-import { Resposta } from "./Resposta";
+import { Resposta } from "./resposta";
 
 export class Pergunta {
+  
     id: number;
     pergunta: string;
-    respostas: Resposta[];
-    categoria: number;
-
+    respostas: Resposta[]; //Para a lista de resposta
+    categoria : string;
+   
     constructor(){
         this.id = 0;
         this.pergunta = '';
-        this.categoria = 0;
+        this.categoria = '';
+        this.respostas = [];
     }
 }

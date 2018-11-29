@@ -1,11 +1,12 @@
-export class Resposta {
-    label: string;
-    descricao: string;
-    condicao: boolean;
+export class Resposta{
+    label:string;
+    descricao:string;
+    condicao:boolean;
 
     constructor(){
-        this.label = "";
+        this.label = '';
         this.descricao = '';
         this.condicao = false;
     }
+
 }

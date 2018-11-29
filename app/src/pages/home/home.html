@@ -6,12 +6,23 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button ion-item (click)='avancarListaUsuario()'>
+      <button ion-item (click)="avancarListaUsuario()">
         Usuarios
       </button>
-      <button ion-item>
+      <button ion-item (click)="mostrarLista()">
         Perguntas
       </button>
+      <div *ngIf="pergunta">
+        <ion-list>
+          <ion-item (click)="cadastrarPergunta()">
+            Cadastrar
+          </ion-item>
+          <ion-item (click)="listarPergunta()">
+            Listar
+          </ion-item>
+        </ion-list>
+      </div>
+
 
     </ion-list>
   </ion-content>

@@ -1,10 +1,8 @@
-
-
+import { Resposta } from './../../modules/resposta';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { Pergunta } from '../../modules/pergunta';
 import { HttpClient } from '@angular/common/http';
-import { Resposta } from '../../modules/resposta';
 import { CadastroDescricaoPerguntaPage } from '../cadastro-descricao-pergunta/cadastro-descricao-pergunta';
 
 /**
@@ -21,7 +19,7 @@ import { CadastroDescricaoPerguntaPage } from '../cadastro-descricao-pergunta/ca
 })
 export class CadastroPerguntaPage {
 
-  public resposta: Resposta;
+  public resposta: Resposta ;
 
   private orderForm;
 
