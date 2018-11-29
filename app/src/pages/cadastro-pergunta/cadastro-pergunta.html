@@ -12,56 +12,69 @@
 
 <ion-content padding>
   <form (ngSubmit)="verficaSalvarEditar()">
-     
+
     <ion-item>
-          <ion-label stacked>Pergunta: </ion-label>
-          <ion-input placeholder="Digite a Pergunta" [(ngModel)]="pergunta.pergunta" name="pergunta"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label stacked>Respostas: </ion-label>
-          </ion-item>
-          <ion-item>
-              <ion-label stacked>Opção A: </ion-label>
-              <button ion-button outline item-end icon-start (click)="cadastroDescricaoA()">  <ion-icon name="add-circle"></ion-icon></button>
-            </ion-item>
-            
-      <ion-item>
-        <ion-label stacked>Opção B: </ion-label>
-        <button ion-button outline item-end icon-start (click)="cadastroDescricaoB()">  <ion-icon name="add-circle"></ion-icon></button>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label stacked>Opção C: </ion-label>
-        <button ion-button outline item-end icon-start (click)="cadastroDescricaoC()">  <ion-icon name="add-circle"></ion-icon></button>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label stacked>Opção D: </ion-label>
-        <button ion-button outline item-end icon-start (click)="cadastroDescricaoD()">  <ion-icon name="add-circle"></ion-icon></button>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label stacked>Opção E: </ion-label>
-        <button ion-button outline item-end icon-start (click)="cadastroDescricaoE()">  <ion-icon name="add-circle"></ion-icon></button>
-      </ion-item>
-      <ion-item>
-          <ion-label stacked>Categoria: </ion-label>
-          <ion-input placeholder="Digite a categoria" [(ngModel)]="pergunta.categoria" name="categoria" ></ion-input>
-        </ion-item>
+      <ion-label stacked>Pergunta: </ion-label>
+      <ion-input placeholder="Digite a Pergunta" [(ngModel)]="pergunta.pergunta" name="pergunta"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Respostas: </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Opção A: </ion-label>
+      <button ion-button icon-only item-end (click)="cadastroDescricaoA()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-item>
 
-        <div *ngIf="error.condicao" text-center margin-top>
-          <p ion-text color="danger">{{error.message}}</p>
-      </div>
-  
-     
-      <div *ngIf="success.condicao" text-center margin-top>
-          <p ion-text color="primary">{{success.message}}</p>
-      </div>
-      
-      <div text-center margin-top>
-        <button ion-button color="secondary">Salvar</button>
-      </div>
+    <ion-item>
+      <ion-label stacked>Opção B: </ion-label>
+      <button ion-button icon-only item-end (click)="cadastroDescricaoB()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-item>
 
-       
+    <ion-item>
+      <ion-label stacked>Opção C: </ion-label>
+      <button ion-button icon-only item-end (click)="cadastroDescricaoC()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Opção D: </ion-label>
+
+      <button ion-button icon-only item-end (click)="cadastroDescricaoD()">
+
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Opção E: </ion-label>
+      <button ion-button icon-only item-end  (click)="cadastroDescricaoE()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Categoria: </ion-label>
+      <ion-input placeholder="Digite a categoria" [(ngModel)]="pergunta.categoria" name="categoria"></ion-input>
+    </ion-item>
+
+    <div *ngIf="error.condicao" text-center margin-top>
+      <p ion-text color="danger">{{error.message}}</p>
+    </div>
+
+
+    <div *ngIf="success.condicao" text-center margin-top>
+      <p ion-text color="primary">{{success.message}}</p>
+    </div>
+
+    <div text-center margin-top>
+      <button ion-button color="secondary">Salvar</button>
+    </div>
+
+
   </form>
-  </ion-content>
+</ion-content>

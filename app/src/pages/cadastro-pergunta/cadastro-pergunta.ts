@@ -69,16 +69,12 @@ export class CadastroPerguntaPage {
     for (var i = 0; i < 5; i++) {
       if (this.pergunta.respostas[i].label == "A") {
 
-        console.log("entrou no if")
-
-
-        console.log("entrou no for" + i);
-
+       
         this.navCtrl.push(CadastroDescricaoPerguntaPage.name, { teste: this.pergunta.respostas[i] });
       }else {
   
         this.navCtrl.push(CadastroDescricaoPerguntaPage.name, { respostaSelecionada: this.resposta });
-        console.log("entrou else")
+        
       }
     }
 
@@ -129,9 +125,9 @@ export class CadastroPerguntaPage {
     this.http.post("http://localhost:3000/pergunta_resposta",
       this.pergunta
     ).subscribe(res => {
-      // console.log(res);
+      
       this.error.condicao = false;
-      this.error.message = '';
+      this.error.message = 'Falha';
       this.success.condicao = true;
       this.success.message = "Criado com sucesso"
       this.navCtrl.pop();
